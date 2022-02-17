@@ -36,7 +36,7 @@ public class Book {
     @Column(name="name")
     private String name;
     
-    @ManyToOne
-    @JoinColumn(name="w_id")
+    @ManyToOne()
+    @JoinColumn(name="writer_id")
     private Writer writer;
 }

@@ -19,10 +19,10 @@ public interface BookService {
     
     Result add(Book book);
     
-    DataResult<Book> getByBookName(String name);
+    DataResult<Book> getByBookName(String bookName);
     
-    DataResult<Book> getByProductId(int id);
+    DataResult<Book> getByBookId(int bookId);
     
-    DataResult<List<Book>> getByWriterId(int id);
+    DataResult<List<Book>> getByWriterId(int writerId);
     
 }
