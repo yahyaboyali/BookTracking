@@ -50,12 +50,7 @@ public class BookManager implements BookService {
         );
     }
     
-    @Override
-    public DataResult<Book> getByBookId(int bookId) {
-        return new SuccessDataResult<Book>(
-                this.bookDao.getById(bookId),"data has listed by bookId method"
-        );
-    }
+ 
     
     @Override
     public DataResult<List<Book>> getByWriterId(int writer_id) {

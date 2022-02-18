@@ -17,7 +17,6 @@ public interface BookDao extends JpaRepository<Book, Integer>{
     
     Book getByName(String name);
     
-    Book getById(int id);
     
     List<Book> getByWriterId(int writer_id);
     

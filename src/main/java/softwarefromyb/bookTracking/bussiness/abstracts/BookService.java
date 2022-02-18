@@ -21,8 +21,7 @@ public interface BookService {
     
     DataResult<Book> getByBookName(String bookName);
     
-    DataResult<Book> getByBookId(int bookId);
     
     DataResult<List<Book>> getByWriterId(int writerId);
-    
+  // name ile çalışıyor id ile çalışmıyor çözümümü izle   
 }

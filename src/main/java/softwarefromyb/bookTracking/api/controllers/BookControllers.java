@@ -49,5 +49,10 @@ public class BookControllers {
     public DataResult<Book> getByBookName(@RequestParam String bookName){
         return this.bookService.getByBookName(bookName);
     }
-
+    
+    @GetMapping("/getByWriterId")
+    public DataResult<List<Book>> getByWriterId(@RequestParam int wid){
+        return this.bookService.getByWriterId(wid);
+    }
+    
 }
