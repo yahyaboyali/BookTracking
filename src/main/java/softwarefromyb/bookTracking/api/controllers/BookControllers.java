@@ -55,4 +55,14 @@ public class BookControllers {
         return this.bookService.getByWriterId(wid);
     }
     
+    @GetMapping("/getByWriterName")
+    public DataResult<List<Book>> getByWriterName(@RequestParam String writerName){
+        return this.bookService.getByWriterName(writerName);
+    }
+    
+    @GetMapping("/getByWriterNameAndWriterLastname")
+    public DataResult<List<Book>> getByWriterNameAndWriterLastname(@RequestParam("writerName") String writerName,
+            @RequestParam("writerLastname") String writerLastname){
+        return this.bookService.getByWriterNameAndWriterLastname(writerName, writerLastname);
+    }
 }

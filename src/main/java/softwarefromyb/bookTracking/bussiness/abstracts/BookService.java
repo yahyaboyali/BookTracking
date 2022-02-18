@@ -20,8 +20,10 @@ public interface BookService {
     Result add(Book book);
     
     DataResult<Book> getByBookName(String bookName);
-    
-    
+ 
     DataResult<List<Book>> getByWriterId(int writerId);
   // name ile çalışıyor id ile çalışmıyor çözümümü izle   
+    DataResult<List<Book>> getByWriterName(String writerName);
+    
+    DataResult<List<Book>> getByWriterNameAndWriterLastname(String writerName,String writerLastname);
 }

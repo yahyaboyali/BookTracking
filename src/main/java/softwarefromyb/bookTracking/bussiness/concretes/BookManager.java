@@ -55,10 +55,25 @@ public class BookManager implements BookService {
     @Override
     public DataResult<List<Book>> getByWriterId(int writer_id) {
         return new SuccessDataResult<List<Book>>(
-                this.bookDao.getByWriterId(writer_id)
+                this.bookDao.getByWriterId(writer_id),"data writer id ile geldi"
         );
     }
 
+    @Override
+    public DataResult<List<Book>> getByWriterName(String writerName) {
+        return new SuccessDataResult<List<Book>>(
+                this.bookDao.getByWriterName(writerName),"writer name e göre data geldi"
+        );
+    }
+
+    @Override
+    public DataResult<List<Book>> getByWriterNameAndWriterLastname(String writerName, String writerLastname) {
+        return new SuccessDataResult<List<Book>>(
+                this.bookDao.getByWriterNameAndWriterLastname(writerName, writerLastname),
+                "data writer name and last name ile geldi"
+        );
+    }
+    
     
     
 }
