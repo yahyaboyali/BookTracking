@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import softwarefromyb.bookTracking.bussiness.abstracts.BookService;
 import softwarefromyb.bookTracking.core.utilities.results.DataResult;
+import softwarefromyb.bookTracking.core.utilities.results.ErrorDataResult;
 import softwarefromyb.bookTracking.core.utilities.results.Result;
 import softwarefromyb.bookTracking.core.utilities.results.SuccessDataResult;
 import softwarefromyb.bookTracking.core.utilities.results.SuccessResult;
@@ -22,48 +23,51 @@ import softwarefromyb.bookTracking.entities.concretes.Book;
  */
 @Service
 public class BookManager implements BookService {
-    
+
     private BookDao bookDao;
-    
+
     @Autowired
     public BookManager(BookDao bookDao) {
         this.bookDao = bookDao;
     }
-    
+
     @Override
     public DataResult<List<Book>> getAll() {
         return new SuccessDataResult<List<Book>>(
-                this.bookDao.findAll(),"data is listing by getAll method"
+                this.bookDao.findAll(), "data is listing by getAll method"
         );
     }
-    
+
     @Override
     public Result add(Book book) {
         this.bookDao.save(book);
         return new SuccessResult("adding book is success");
     }
-    
+
     @Override
     public DataResult<Book> getByBookName(String name) {
         return new SuccessDataResult<Book>(
-        this.bookDao.getByName(name),"data has listed by bookName method"
+                this.bookDao.getByName(name), "data has listed by bookName method"
         );
     }
-    
- 
-    
+
     @Override
     public DataResult<List<Book>> getByWriterId(int writer_id) {
         return new SuccessDataResult<List<Book>>(
-                this.bookDao.getByWriterId(writer_id),"data writer id ile geldi"
+                this.bookDao.getByWriterId(writer_id), "data writer id ile geldi"
         );
     }
 
     @Override
     public DataResult<List<Book>> getByWriterName(String writerName) {
-        return new SuccessDataResult<List<Book>>(
-                this.bookDao.getByWriterName(writerName),"writer name e göre data geldi"
-        );
+        if (this.bookDao.getByWriterName(writerName).isEmpty()) {
+            return new ErrorDataResult<List<Book>>("böyle bir yazar yok");
+        } else {
+            return new SuccessDataResult<List<Book>>(
+                    this.bookDao.getByWriterName(writerName), "writer name e göre data geldi"
+            );
+        }
+
     }
 
     @Override
@@ -73,7 +77,5 @@ public class BookManager implements BookService {
                 "data writer name and last name ile geldi"
         );
     }
-    
-    
-    
+
 }

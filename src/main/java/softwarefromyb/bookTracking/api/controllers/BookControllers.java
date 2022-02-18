@@ -5,17 +5,26 @@
  */
 package softwarefromyb.bookTracking.api.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import softwarefromyb.bookTracking.bussiness.abstracts.BookService;
 import softwarefromyb.bookTracking.core.utilities.results.DataResult;
+import softwarefromyb.bookTracking.core.utilities.results.ErrorDataResult;
 import softwarefromyb.bookTracking.core.utilities.results.Result;
 import softwarefromyb.bookTracking.entities.concretes.Book;
 
@@ -54,6 +63,10 @@ public class BookControllers {
     public DataResult<List<Book>> getByWriterId(@RequestParam int wid){
         return this.bookService.getByWriterId(wid);
     }
+//    @GetMapping("/getByBookName")
+//    public ResponseEntity<?> getByBookName(@Valid @RequestParam String bookName){
+//        return ResponseEntity.ok(this.bookService.getByBookName(bookName));
+//    }
     
     @GetMapping("/getByWriterName")
     public DataResult<List<Book>> getByWriterName(@RequestParam String writerName){
@@ -65,4 +78,5 @@ public class BookControllers {
             @RequestParam("writerLastname") String writerLastname){
         return this.bookService.getByWriterNameAndWriterLastname(writerName, writerLastname);
     }
+    
 }
