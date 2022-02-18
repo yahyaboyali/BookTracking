@@ -33,7 +33,8 @@ public class BookManager implements BookService {
     @Override
     public DataResult<List<Book>> getAll() {
         return new SuccessDataResult<List<Book>>(
-                this.bookDao.findAll(), "success");
+                this.bookDao.findAll(),"data is listing by getAll method"
+        );
     }
     
     @Override
@@ -45,13 +46,15 @@ public class BookManager implements BookService {
     @Override
     public DataResult<Book> getByBookName(String name) {
         return new SuccessDataResult<Book>(
-                this.bookDao.getByName(name), "data is listing");
+        this.bookDao.getByName(name),"data has listed by bookName method"
+        );
     }
     
     @Override
     public DataResult<Book> getByBookId(int bookId) {
         return new SuccessDataResult<Book>(
-                this.bookDao.getById(bookId), "id ile geldi");
+                this.bookDao.getById(bookId),"data has listed by bookId method"
+        );
     }
     
     @Override

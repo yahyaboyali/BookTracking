@@ -36,6 +36,9 @@ public class Book {
     @Column(name="name")
     private String name;
     
+    @Column(name="number_of_pages")
+    private int numberOfPages;
+    
     @ManyToOne()
     @JoinColumn(name="writer_id")
     private Writer writer;

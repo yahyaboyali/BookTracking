@@ -14,6 +14,6 @@ public class ErrorResult extends Result{
         super(false);
     }
     public ErrorResult(String message){
-        super(message,false);
+        super(false,message);
     }
 }

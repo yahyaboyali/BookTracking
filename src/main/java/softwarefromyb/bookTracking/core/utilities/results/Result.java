@@ -19,9 +19,9 @@ public class Result {
         this.success = success;
     }
 
-    public Result(String message, Boolean success) {
+    public Result(boolean success,String message) {
         this(success);
-        this.success = success;
+        this.message=message;
     }
 
     public String getMessage() {

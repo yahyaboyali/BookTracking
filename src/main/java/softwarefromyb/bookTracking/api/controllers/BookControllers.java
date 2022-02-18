@@ -9,10 +9,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import softwarefromyb.bookTracking.bussiness.abstracts.BookService;
 import softwarefromyb.bookTracking.core.utilities.results.DataResult;
+import softwarefromyb.bookTracking.core.utilities.results.Result;
 import softwarefromyb.bookTracking.entities.concretes.Book;
 
 /**
@@ -34,6 +38,16 @@ public class BookControllers {
     @GetMapping("/getAll")
     public DataResult<List<Book>> getAll(){
         return this.bookService.getAll();
+    }
+    
+    @PostMapping("/add")
+    public Result add(@RequestBody Book book){
+        return this.bookService.add(book);
+    }
+    
+    @GetMapping("/getByBookName")
+    public DataResult<Book> getByBookName(@RequestParam String bookName){
+        return this.bookService.getByBookName(bookName);
     }
 
 }
