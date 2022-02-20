@@ -5,6 +5,7 @@
  */
 package softwarefromyb.bookTracking.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import softwarefromyb.bookTracking.core.utilities.entities.Person;
+
 
 /**
  *
@@ -30,6 +31,7 @@ import softwarefromyb.bookTracking.core.utilities.entities.Person;
 @Table(name="book")
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","dailyRoutines"})
 public class Book {
     
     @Id
@@ -47,6 +49,7 @@ public class Book {
     @JoinColumn(name="writer_id")
     private Writer writer;
     
-//    @OneToMany(mappedBy = "person")
-//    private List<Person> person;
+    @OneToMany(mappedBy = "id")
+    private List<DailyRoutine> dailyRoutines;
+    
 }
