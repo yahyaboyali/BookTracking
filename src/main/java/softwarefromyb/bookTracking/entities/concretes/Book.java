@@ -49,7 +49,7 @@ public class Book {
     @JoinColumn(name="writer_id")
     private Writer writer;
     
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "book")
     private List<DailyRoutine> dailyRoutines;
     
 }

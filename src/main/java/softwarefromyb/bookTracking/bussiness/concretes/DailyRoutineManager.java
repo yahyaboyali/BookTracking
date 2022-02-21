@@ -15,6 +15,7 @@ import softwarefromyb.bookTracking.core.utilities.results.SuccessDataResult;
 import softwarefromyb.bookTracking.core.utilities.results.SuccessResult;
 import softwarefromyb.bookTracking.dataAccess.abstracts.DailyRoutineDao;
 import softwarefromyb.bookTracking.entities.concretes.DailyRoutine;
+import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto;
 
 /**
  *
@@ -46,6 +47,13 @@ public class DailyRoutineManager implements DailyRoutineService{
     public Result insertDailyRoutine(int pid, int bid, int countofpages, String dailyNote) {
         this.dailyRoutineDao.insertDailyroutine(pid, bid, countofpages, dailyNote);
         return new SuccessResult("adding daily routine insertdaily");
+    }
+
+    @Override
+    public DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDto() {
+        return new SuccessDataResult<List<BookWithDailyRoutineDto>> (
+                this.dailyRoutineDao.getBookWithDailyRoutine(),"data listelendi"
+        );
     }
 
    

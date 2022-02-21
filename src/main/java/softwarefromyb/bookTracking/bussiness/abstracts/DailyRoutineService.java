@@ -9,6 +9,7 @@ import java.util.List;
 import softwarefromyb.bookTracking.core.utilities.results.DataResult;
 import softwarefromyb.bookTracking.core.utilities.results.Result;
 import softwarefromyb.bookTracking.entities.concretes.DailyRoutine;
+import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto;
 
 /**
  *
@@ -21,4 +22,6 @@ public interface DailyRoutineService {
     Result add(DailyRoutine dailyRoutine);
     
     Result insertDailyRoutine(int pid,int bid,int countofpages,String dailyNote);
+    
+    DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDto();
 }
