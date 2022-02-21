@@ -29,6 +29,6 @@ public interface DailyRoutineDao extends JpaRepository<DailyRoutine, Integer> {
 
 //    @Query(value = "Select new softwarefromyb.bookTracking.entities.dtos"
 //            + "(b.name, d.countofpages,d.dailynote) "
-//            + "From Book d INNER JOIN  b ")
+//            + "From Book b INNER JOIN DailyRoutine d Where b.id=d.bid ")
 //    List<BookWithDailyRoutineDto> getBookWithDailyRoutine();
 }
