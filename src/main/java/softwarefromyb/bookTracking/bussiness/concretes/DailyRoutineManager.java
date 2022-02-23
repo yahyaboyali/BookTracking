@@ -5,6 +5,7 @@
  */
 package softwarefromyb.bookTracking.bussiness.concretes;
 
+import java.sql.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,10 +50,37 @@ public class DailyRoutineManager implements DailyRoutineService{
         return new SuccessResult("adding daily routine insertdaily");
     }
 
+//    @Override
+//    public DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDto() {
+//        return new SuccessDataResult<List<BookWithDailyRoutineDto>> (
+//                this.dailyRoutineDao.getBookWithDailyRoutine(),"data listelendi"
+//        );
+//    }
+
     @Override
-    public DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDto() {
-        return new SuccessDataResult<List<BookWithDailyRoutineDto>> (
-                this.dailyRoutineDao.getBookWithDailyRoutine(),"data listelendi"
+    public DataResult<List<DailyRoutine>> getByPerson_id(int pid) {
+        return new SuccessDataResult<List<DailyRoutine>> (
+        this.dailyRoutineDao.getByPerson_id(pid),"data person id ile listelendi");
+    }
+
+    @Override
+    public DataResult<List<DailyRoutine>> getByDate(Date date) {
+        return new SuccessDataResult<List<DailyRoutine>>(
+                this.dailyRoutineDao.getByDate(date),"data date e göre listelendi"
+        );
+    }
+
+    @Override
+    public DataResult<List<DailyRoutine>> getByDateAndPerson_id(Date date, int id) {
+        return new SuccessDataResult<List<DailyRoutine>>(
+                this.dailyRoutineDao.getByDateAndPerson_id(date, id),"data person id ve date e göre geldi"
+        );
+    }
+
+    @Override
+    public DataResult<List<DailyRoutine>> getByDateAndPerson_name(Date date, String name) {
+        return new SuccessDataResult<List<DailyRoutine>>(
+                this.dailyRoutineDao.getByDateAndPerson_name(date, name),"data person name ve date e göre geldi"
         );
     }
 

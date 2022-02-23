@@ -42,7 +42,7 @@ public class DailyRoutine {
     
     
     @Column(name="date")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private Date date;
     
     @ManyToOne

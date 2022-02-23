@@ -5,6 +5,7 @@
  */
 package softwarefromyb.bookTracking.bussiness.abstracts;
 
+import java.sql.Date;
 import java.util.List;
 import softwarefromyb.bookTracking.core.utilities.results.DataResult;
 import softwarefromyb.bookTracking.core.utilities.results.Result;
@@ -18,10 +19,17 @@ import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto;
 public interface DailyRoutineService {
 
     DataResult<List<DailyRoutine>> getAll();
-    
+
     Result add(DailyRoutine dailyRoutine);
+
+    Result insertDailyRoutine(int pid, int bid, int countofpages, String dailyNote);
+
+    //DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDto();
+    DataResult<List<DailyRoutine>> getByPerson_id(int pid);
     
-    Result insertDailyRoutine(int pid,int bid,int countofpages,String dailyNote);
+    DataResult<List<DailyRoutine>> getByDate(Date date);
     
-    DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDto();
+    DataResult<List<DailyRoutine>> getByDateAndPerson_id(Date date,int id);
+    
+    DataResult<List<DailyRoutine>> getByDateAndPerson_name(Date date,String name);
 }

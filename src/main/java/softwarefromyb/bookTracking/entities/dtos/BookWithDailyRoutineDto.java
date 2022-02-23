@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BookWithDailyRoutineDto {
 
-    private String bookName;
+    private String bookname;
     private int countofpages;
-    private String dailyNote;
+    private String dailynote;
 }

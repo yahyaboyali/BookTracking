@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package softwarefromyb.bookTracking.dataAccess.abstracts;
+package softwarefromyb.bookTracking.bussiness.abstracts;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import softwarefromyb.bookTracking.core.utilities.results.Result;
 import softwarefromyb.bookTracking.entities.concretes.Writer;
 
 /**
  *
  * @author yahya
  */
-public interface WriterDao extends JpaRepository<Writer, Integer> {
-
-  //  Writer getByName();
+public interface WriterService {
+   // Writer getByName();
+    
+    Result add(Writer writer);
 }
