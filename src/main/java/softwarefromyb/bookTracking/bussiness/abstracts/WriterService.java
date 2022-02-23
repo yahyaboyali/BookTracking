@@ -5,6 +5,7 @@
  */
 package softwarefromyb.bookTracking.bussiness.abstracts;
 
+import softwarefromyb.bookTracking.core.utilities.results.DataResult;
 import softwarefromyb.bookTracking.core.utilities.results.Result;
 import softwarefromyb.bookTracking.entities.concretes.Writer;
 
@@ -16,4 +17,6 @@ public interface WriterService {
    // Writer getByName();
     
     Result add(Writer writer);
+    
+    DataResult<Writer> getById(int id);
 }

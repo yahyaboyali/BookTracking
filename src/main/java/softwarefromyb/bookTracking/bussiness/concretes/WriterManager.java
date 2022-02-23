@@ -8,7 +8,10 @@ package softwarefromyb.bookTracking.bussiness.concretes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import softwarefromyb.bookTracking.bussiness.abstracts.WriterService;
+import softwarefromyb.bookTracking.core.utilities.results.DataResult;
+import softwarefromyb.bookTracking.core.utilities.results.ErrorDataResult;
 import softwarefromyb.bookTracking.core.utilities.results.Result;
+import softwarefromyb.bookTracking.core.utilities.results.SuccessDataResult;
 import softwarefromyb.bookTracking.core.utilities.results.SuccessResult;
 import softwarefromyb.bookTracking.dataAccess.abstracts.WriterDao;
 import softwarefromyb.bookTracking.entities.concretes.Writer;
@@ -32,5 +35,16 @@ public class WriterManager implements WriterService{
         this.writerDao.save(writer);
         return new SuccessResult("yazar eklendi");
     }
+
+    @Override
+    public DataResult<Writer> getById(int id) {
+        if(this.writerDao.getById(id).getId()==id){
+            return new SuccessDataResult<Writer>(this.writerDao.getById(id),"id ile geldi");
+        }else{
+            return new ErrorDataResult<Writer>("data listelenemedi");
+        }
+    }
+
+
     
 }
