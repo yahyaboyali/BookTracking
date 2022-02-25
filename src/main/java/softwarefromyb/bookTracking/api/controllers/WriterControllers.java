@@ -27,7 +27,8 @@ import softwarefromyb.bookTracking.core.utilities.results.ErrorDataResult;
 import softwarefromyb.bookTracking.core.utilities.results.Result;
 import softwarefromyb.bookTracking.entities.concretes.Writer;
 import softwarefromyb.bookTracking.exceptions.EntityNotFoundException;
-
+import org.springframework.http.converter.HttpMessageNotWritableException;
+import org.springframework.web.bind.annotation.PathVariable;
 /**
  *
  * @author yahya
@@ -55,15 +56,17 @@ public class WriterControllers {
     }
 
     @GetMapping("/getByIdValid")
-    ResponseEntity<?> getByIdValid(@RequestBody int id) {
+    ResponseEntity<?> getByIdValid(@PathVariable @RequestBody int id) {
         return ResponseEntity.ok(this.writerService.getById(id));
     }
     
-    @ExceptionHandler(EntityNotFoundException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorDataResult<Object> entityNotFound(){
+    @ExceptionHandler(HttpMessageNotWritableException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorDataResult<Object> entityNotFound
+        (HttpMessageNotWritableException exceptions){
+           
         return new ErrorDataResult<Object> (
-                "bulunamadı"
+                "data bulunamadı"
         );
     }
     
