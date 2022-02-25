@@ -28,11 +28,6 @@ public interface DailyRoutineDao extends JpaRepository<DailyRoutine, Integer> {
     void insertDailyroutine(@Param("pid") int pid, @Param("bid") int bid, @Param("countofpages") int countofpages,
             @Param("dailynote") String dailynote);
 
-//    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto"
-//            + "( b.bookname, d.countofpages, d.dailynote) "
-//            + "From Book b Inner Join b.dailyroutines d")
-//    //@Query(value = "SELECT new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto b.name, d.countofpages, d.dailynote From Book b INNER JOIN Dailyroutine d ON b.id=d.bid", nativeQuery = true )
-//    List<BookWithDailyRoutineDto> getBookWithDailyRoutine();
     List<DailyRoutine> getByPerson_id(@Param("pid") int pid);
     
     List<DailyRoutine> getByDate(Date date);
@@ -40,4 +35,12 @@ public interface DailyRoutineDao extends JpaRepository<DailyRoutine, Integer> {
     List<DailyRoutine> getByDateAndPerson_id(Date date,int id);
     
     List<DailyRoutine> getByDateAndPerson_name(Date date,String name);
+    
+    //    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto"
+//            + "( b.bookname, d.countofpages, d.dailynote) "
+//            + "From Book b Inner Join b.dailyroutines d")
+//    //@Query(value = "SELECT new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto b.name, d.countofpages, d.dailynote From Book b INNER JOIN Dailyroutine d ON b.id=d.bid", nativeQuery = true )
+    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto (b.name,d.countOfPages,d.dailyNote)"
+            + "From Book b Inner Join b.dailyRoutines d")
+    List<BookWithDailyRoutineDto> getBookWithDailyRoutine();
 }

@@ -50,12 +50,12 @@ public class DailyRoutineManager implements DailyRoutineService{
         return new SuccessResult("adding daily routine insertdaily");
     }
 
-//    @Override
-//    public DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDto() {
-//        return new SuccessDataResult<List<BookWithDailyRoutineDto>> (
-//                this.dailyRoutineDao.getBookWithDailyRoutine(),"data listelendi"
-//        );
-//    }
+    @Override
+    public DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDto() {
+        return new SuccessDataResult<List<BookWithDailyRoutineDto>> (
+                this.dailyRoutineDao.getBookWithDailyRoutine(),"data listelendi"
+        );
+    }
 
     @Override
     public DataResult<List<DailyRoutine>> getByPerson_id(int pid) {

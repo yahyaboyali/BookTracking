@@ -50,10 +50,10 @@ public class DailyRoutineControllers {
     public Result insertDailyRoutine(@RequestParam int pid, @RequestParam int bid, @RequestParam int countofpages, @RequestParam String dailyNote) {
         return this.dailyRoutineService.insertDailyRoutine(pid, bid, countofpages, dailyNote);
     }
-//    @GetMapping("/bookWithDailyRoutineDTO")
-//    public DataResult<List<BookWithDailyRoutineDto>> bookWithDailyRoutineDto(){
-//        return this.dailyRoutineService.getBookWithDailyRoutineDto();
-//    }
+    @GetMapping("/bookWithDailyRoutineDTO")
+    public DataResult<List<BookWithDailyRoutineDto>> bookWithDailyRoutineDto(){
+        return this.dailyRoutineService.getBookWithDailyRoutineDto();
+    }
 
     @GetMapping("/getByPersonId")
     public DataResult<List<DailyRoutine>> getByPid(@RequestParam int pid) {
