@@ -56,7 +56,7 @@ public class WriterControllers {
     }
 
     @GetMapping("/getByIdValid")
-    ResponseEntity<?> getByIdValid(@PathVariable @RequestBody int id) {
+    ResponseEntity<?> getByIdValid(@RequestBody int id) {
         return ResponseEntity.ok(this.writerService.getById(id));
     }
     
