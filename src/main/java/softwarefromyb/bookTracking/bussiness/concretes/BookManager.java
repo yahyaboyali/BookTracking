@@ -89,9 +89,9 @@ public class BookManager implements BookService {
     }
 
     @Override
-    public DataResult<List<Book>> getByBookNameStartsWith(String name) {
+    public DataResult<List<Book>> getByNameStartsWith(String name) {
         return new SuccessDataResult<List<Book>>(
-                this.bookDao.getByBookNameStartsWith(name),"datalar listelendi"
+                this.bookDao.getByNameStartsWith(name),"datalar listelendi"
         );
     }
 

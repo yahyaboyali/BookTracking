@@ -29,5 +29,5 @@ public interface BookService {
     
     Result existsBookByName(String name);
     
-    DataResult<List<Book>> getByBookNameStartsWith(String name);
+    DataResult<List<Book>> getByNameStartsWith(String name);
 }

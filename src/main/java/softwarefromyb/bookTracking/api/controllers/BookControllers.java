@@ -85,8 +85,8 @@ public class BookControllers {
     }
     
     @GetMapping("/getByBookNameStartsWith")
-    public DataResult<List<Book>> getByBookNameStartsWith(String name){
-        return this.bookService.getByBookNameStartsWith(name);
+    public DataResult<List<Book>> getByNameStartsWith(String name){
+        return this.bookService.getByNameStartsWith(name);
     }
     
 }

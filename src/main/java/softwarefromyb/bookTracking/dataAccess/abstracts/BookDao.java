@@ -25,5 +25,5 @@ public interface BookDao extends JpaRepository<Book, Integer> {
 
     boolean existsBookByName(String name);
     
-    List<Book> getByProductNameStartsWith(String productName);
+    List<Book> getByNameStartsWith(String name);
 }
