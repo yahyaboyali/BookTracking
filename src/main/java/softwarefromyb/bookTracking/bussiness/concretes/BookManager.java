@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import softwarefromyb.bookTracking.bussiness.abstracts.BookService;
 import softwarefromyb.bookTracking.core.utilities.results.DataResult;
 import softwarefromyb.bookTracking.core.utilities.results.ErrorDataResult;
+import softwarefromyb.bookTracking.core.utilities.results.ErrorResult;
 import softwarefromyb.bookTracking.core.utilities.results.Result;
 import softwarefromyb.bookTracking.core.utilities.results.SuccessDataResult;
 import softwarefromyb.bookTracking.core.utilities.results.SuccessResult;
@@ -75,6 +76,22 @@ public class BookManager implements BookService {
         return new SuccessDataResult<List<Book>>(
                 this.bookDao.getByWriterNameAndWriterLastname(writerName, writerLastname),
                 "data writer name and last name ile geldi"
+        );
+    }
+
+    @Override
+    public Result existsBookByName(String name) {
+        if(this.bookDao.existsBookByName(name)){
+            return new SuccessResult("data bulundu");
+        }else{
+            return new ErrorResult("data bulunamadı");
+        }
+    }
+
+    @Override
+    public DataResult<List<Book>> getByBookNameStartsWith(String name) {
+        return new SuccessDataResult<List<Book>>(
+                this.bookDao.getByBookNameStartsWith(name),"datalar listelendi"
         );
     }
 

@@ -26,4 +26,8 @@ public interface BookService {
     DataResult<List<Book>> getByWriterName(String writerName);
     
     DataResult<List<Book>> getByWriterNameAndWriterLastname(String writerName,String writerLastname);
+    
+    Result existsBookByName(String name);
+    
+    DataResult<List<Book>> getByBookNameStartsWith(String name);
 }

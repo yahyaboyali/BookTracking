@@ -19,4 +19,8 @@ public interface WriterService {
     Result add(Writer writer);
     
     DataResult<Writer> getById(int id);
+    
+    Result existsById(int id);
+    
+    Result exitstsWriterByName(String name);
 }

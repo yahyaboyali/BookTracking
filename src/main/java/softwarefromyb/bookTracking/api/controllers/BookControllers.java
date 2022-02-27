@@ -79,4 +79,14 @@ public class BookControllers {
         return this.bookService.getByWriterNameAndWriterLastname(writerName, writerLastname);
     }
     
+    @GetMapping("/exitstBookByName")
+    public Result existsBookByName(String name){
+        return this.bookService.existsBookByName(name);
+    }
+    
+    @GetMapping("/getByBookNameStartsWith")
+    public DataResult<List<Book>> getByBookNameStartsWith(String name){
+        return this.bookService.getByBookNameStartsWith(name);
+    }
+    
 }

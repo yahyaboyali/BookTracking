@@ -49,10 +49,15 @@ public class WriterControllers {
     public Result add(Writer writer) {
         return this.writerService.add(writer);
     }
-
+    
     @GetMapping("/getById")
     public DataResult getById(int id) {
         return this.writerService.getById(id);
+    }
+    
+    @GetMapping("/getByNameIs")
+    public Result existsByWriterByName(String name){
+        return this.writerService.exitstsWriterByName(name);
     }
 
     @GetMapping("/getByIdValid")
