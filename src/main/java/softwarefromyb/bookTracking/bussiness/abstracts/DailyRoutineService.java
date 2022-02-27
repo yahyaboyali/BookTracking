@@ -25,12 +25,14 @@ public interface DailyRoutineService {
     Result insertDailyRoutine(int pid, int bid, int countofpages, String dailyNote);
 
     DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDto();
-    
+
     DataResult<List<DailyRoutine>> getByPerson_id(int pid);
-    
+
     DataResult<List<DailyRoutine>> getByDate(Date date);
-    
-    DataResult<List<DailyRoutine>> getByDateAndPerson_id(Date date,int id);
-    
-    DataResult<List<DailyRoutine>> getByDateAndPerson_name(Date date,String name);
+
+    DataResult<List<DailyRoutine>> getByDateAndPerson_id(Date date, int id);
+
+    DataResult<List<DailyRoutine>> getByDateAndPerson_name(Date date, String name);
+
+    DataResult<List<DailyRoutine>> getAllSorted();
 }

@@ -8,6 +8,7 @@ package softwarefromyb.bookTracking.bussiness.concretes;
 import java.sql.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import softwarefromyb.bookTracking.bussiness.abstracts.DailyRoutineService;
 import softwarefromyb.bookTracking.core.utilities.results.DataResult;
@@ -82,6 +83,13 @@ public class DailyRoutineManager implements DailyRoutineService{
         return new SuccessDataResult<List<DailyRoutine>>(
                 this.dailyRoutineDao.getByDateAndPerson_name(date, name),"data person name ve date e göre geldi"
         );
+    }
+
+    @Override
+    public DataResult<List<DailyRoutine>> getAllSorted() {
+        Sort sort = Sort.by(Sort.Direction.DESC,"date");
+        
+        return new SuccessDataResult<List<DailyRoutine>>(this.dailyRoutineDao.findAll(sort),"daily routine desc olarak listelendi");
     }
 
    
