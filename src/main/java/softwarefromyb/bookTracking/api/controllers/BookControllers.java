@@ -89,4 +89,9 @@ public class BookControllers {
         return this.bookService.getByNameStartsWith(name);
     }
     
+    @GetMapping("/getByNameContains")
+    public DataResult<List<Book>> getByNameContains(String name){
+        return this.bookService.getByNameContains(name);
+    }
+    
 }

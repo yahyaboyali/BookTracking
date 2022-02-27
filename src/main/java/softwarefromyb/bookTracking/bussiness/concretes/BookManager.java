@@ -95,4 +95,11 @@ public class BookManager implements BookService {
         );
     }
 
+    @Override
+    public DataResult<List<Book>> getByNameContains(String name) {
+        return new SuccessDataResult<List<Book>>(
+                this.bookDao.getByNameContains(name),"data containsle geldi"
+        );
+    }
+
 }
