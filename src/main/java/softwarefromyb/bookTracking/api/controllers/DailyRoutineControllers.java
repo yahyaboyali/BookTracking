@@ -20,6 +20,7 @@ import softwarefromyb.bookTracking.core.utilities.results.Result;
 import softwarefromyb.bookTracking.core.utilities.results.SuccessResult;
 import softwarefromyb.bookTracking.entities.concretes.DailyRoutine;
 import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto;
+import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineWithDateDTO;
 
 /**
  *

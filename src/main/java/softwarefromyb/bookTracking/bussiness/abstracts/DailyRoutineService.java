@@ -11,6 +11,7 @@ import softwarefromyb.bookTracking.core.utilities.results.DataResult;
 import softwarefromyb.bookTracking.core.utilities.results.Result;
 import softwarefromyb.bookTracking.entities.concretes.DailyRoutine;
 import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto;
+import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineWithDateDTO;
 
 /**
  *

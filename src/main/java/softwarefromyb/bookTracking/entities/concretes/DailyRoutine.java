@@ -23,34 +23,33 @@ import softwarefromyb.bookTracking.core.utilities.entities.Person;
  *
  * @author yahya
  */
-
 @Data
 @Entity
-@Table(name="dailyroutine")
+@Table(name = "dailyroutine")
+@AllArgsConstructor
+@NoArgsConstructor
 public class DailyRoutine {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private int id;
-    
-    @Column(name="countofpages")
+
+    @Column(name = "countofpages")
     private int countOfPages;
-    
-    @Column(name="dailynote")
+
+    @Column(name = "dailynote")
     private String dailyNote;
-    
-    
-    @Column(name="date")
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+
+    @Column(name = "date")
     private Date date;
-    
+
     @ManyToOne
-    @JoinColumn(name="pid")
+    @JoinColumn(name = "pid")
     private Person person;
-    
+
     @ManyToOne
-    @JoinColumn(name="bid")
+    @JoinColumn(name = "bid")
     private Book book;
 
 //    public DailyRoutine(int countOfPages, String dailyNote, Person person, Book book) {
