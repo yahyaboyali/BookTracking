@@ -29,6 +29,8 @@ import softwarefromyb.bookTracking.entities.concretes.Writer;
 import softwarefromyb.bookTracking.exceptions.EntityNotFoundException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import softwarefromyb.bookTracking.core.utilities.results.ErrorResult;
 /**
  *
  * @author yahya
@@ -46,8 +48,8 @@ public class WriterControllers {
     }
 
     @PostMapping("/add")
-    public Result add(Writer writer) {
-        return this.writerService.add(writer);
+    public ResponseEntity<?> add(@Valid @RequestBody Writer writer) {
+        return ResponseEntity.ok(this.writerService.add(writer));
     }
     
 //    @GetMapping("/getById")
@@ -74,6 +76,16 @@ public class WriterControllers {
                 "data is not exist by this id"
         );
     }
-    
-    
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorDataResult<Object> handleValidExceptions(MethodArgumentNotValidException exceptions){
+        Map<String,String>  validationErrors = new HashMap<String,String>();
+        for(FieldError error: exceptions.getBindingResult().getFieldErrors()){
+            validationErrors.put(error.getField(), error.getDefaultMessage());
+        }
+        ErrorDataResult<Object> errorDataResult = new ErrorDataResult<Object>
+        (validationErrors,"lütfen gerekli alanları kuralalara uygun halde doldurun");
+        return errorDataResult;
+    }
+
 }
