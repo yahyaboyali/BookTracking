@@ -50,18 +50,18 @@ public class WriterControllers {
         return this.writerService.add(writer);
     }
     
-    @GetMapping("/getById")
-    public DataResult getById(int id) {
-        return this.writerService.getById(id);
-    }
+//    @GetMapping("/getById")
+//    public DataResult getById(int id) {
+//        return this.writerService.getById(id);
+//    }
     
     @GetMapping("/getByNameIs")
     public Result existsByWriterByName(String name){
         return this.writerService.exitstsWriterByName(name);
     }
 
-    @GetMapping("/getByIdValid")
-    ResponseEntity<?> getByIdValid(@RequestBody int id) {
+    @GetMapping("/getById")
+    ResponseEntity<?> getById(@RequestBody int id) {
         return ResponseEntity.ok(this.writerService.getById(id));
     }
     
@@ -71,7 +71,7 @@ public class WriterControllers {
         (HttpMessageNotWritableException exceptions){
            
         return new ErrorDataResult<Object> (
-                "data bulunamadı"
+                "data is not exist by this id"
         );
     }
     
