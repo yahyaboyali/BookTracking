@@ -6,16 +6,26 @@
 package softwarefromyb.bookTracking.api.controllers;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import softwarefromyb.bookTracking.bussiness.abstracts.DailyRoutineService;
 import softwarefromyb.bookTracking.core.utilities.results.DataResult;
+import softwarefromyb.bookTracking.core.utilities.results.ErrorDataResult;
 import softwarefromyb.bookTracking.core.utilities.results.Result;
 import softwarefromyb.bookTracking.core.utilities.results.SuccessResult;
 import softwarefromyb.bookTracking.entities.concretes.DailyRoutine;
@@ -42,14 +52,14 @@ public class DailyRoutineControllers {
         return this.dailyRoutineService.getAll();
     }
 
-    @PostMapping("/add")
-    public Result add(@RequestBody DailyRoutine dailyRoutine) {
-        return this.dailyRoutineService.add(dailyRoutine);
-    }
+//    @PostMapping("/add")
+//    public ResponseEntity<?> add(@Valid @RequestBody DailyRoutine dailyRoutine) {
+//        return ResponseEntity.ok(this.dailyRoutineService.add(dailyRoutine));
+//    }
 
     @PostMapping("/insertDailyRoutine")
-    public Result insertDailyRoutine(@RequestParam int pid, @RequestParam int bid, @RequestParam int countofpages, @RequestParam String dailyNote) {
-        return this.dailyRoutineService.insertDailyRoutine(pid, bid, countofpages, dailyNote);
+    public ResponseEntity<?> insertDailyRoutine(@Valid @RequestParam int pid,@Valid @RequestParam int bid,@Valid @RequestParam int countofpages,@Valid @RequestParam String dailyNote) {
+        return ResponseEntity.ok(this.dailyRoutineService.insertDailyRoutine(pid, bid, countofpages, dailyNote));
     }
     @GetMapping("/bookWithDailyRoutineDTO")
     public DataResult<List<BookWithDailyRoutineDto>> bookWithDailyRoutineDto(){
@@ -80,4 +90,21 @@ public class DailyRoutineControllers {
     public DataResult<List<DailyRoutine>> getAllSorted(){
         return this.dailyRoutineService.getAllSorted();
     }
+    
+    @GetMapping("/getByBookWithDailyRoutineDtoSorted")
+    public DataResult<List<BookWithDailyRoutineDto>> getByBookWithDailyRoutineDtoSorted(){
+        return this.dailyRoutineService.getBookWithDailyRoutineDtoSorted();
+    }
+    
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorDataResult<Object> handleValidExceptions(MethodArgumentNotValidException exceptions) {
+        Map<String, String> validationErrors = new HashMap<String, String>();
+        for (FieldError error : exceptions.getBindingResult().getFieldErrors()) {
+            validationErrors.put(error.getField(), error.getDefaultMessage());
+        }
+        ErrorDataResult<Object> errorDataResult = new ErrorDataResult<Object>(validationErrors, "lütfen gerekli alanları kuralalara uygun halde doldurun");
+        return errorDataResult; 
+    }
+    
 }

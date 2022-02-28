@@ -25,18 +25,19 @@ import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineWithDateDTO
  * @author yahya
  */
 @Service
-public class DailyRoutineManager implements DailyRoutineService{
-    
+public class DailyRoutineManager implements DailyRoutineService {
+
     private DailyRoutineDao dailyRoutineDao;
-    
+
     @Autowired
-    public DailyRoutineManager(DailyRoutineDao dailyRoutineDao){
-        this.dailyRoutineDao=dailyRoutineDao;
+    public DailyRoutineManager(DailyRoutineDao dailyRoutineDao) {
+        this.dailyRoutineDao = dailyRoutineDao;
     }
+
     @Override
     public DataResult<List<DailyRoutine>> getAll() {
         return new SuccessDataResult<List<DailyRoutine>>(
-                this.dailyRoutineDao.findAll(),"tüm datalar geldi"
+                this.dailyRoutineDao.findAll(), "tüm datalar geldi"
         );
     }
 
@@ -54,45 +55,49 @@ public class DailyRoutineManager implements DailyRoutineService{
 
     @Override
     public DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDto() {
-        return new SuccessDataResult<List<BookWithDailyRoutineDto>> (
-                this.dailyRoutineDao.getBookWithDailyRoutine(),"data listelendi"
+        return new SuccessDataResult<List<BookWithDailyRoutineDto>>(
+                this.dailyRoutineDao.getBookWithDailyRoutine(), "data listelendi"
         );
     }
 
     @Override
     public DataResult<List<DailyRoutine>> getByPerson_id(int pid) {
-        return new SuccessDataResult<List<DailyRoutine>> (
-        this.dailyRoutineDao.getByPerson_id(pid),"data person id ile listelendi");
+        return new SuccessDataResult<List<DailyRoutine>>(
+                this.dailyRoutineDao.getByPerson_id(pid), "data person id ile listelendi");
     }
 
     @Override
     public DataResult<List<DailyRoutine>> getByDate(Date date) {
         return new SuccessDataResult<List<DailyRoutine>>(
-                this.dailyRoutineDao.getByDate(date),"data date e göre listelendi"
+                this.dailyRoutineDao.getByDate(date), "data date e göre listelendi"
         );
     }
 
     @Override
     public DataResult<List<DailyRoutine>> getByDateAndPerson_id(Date date, int id) {
         return new SuccessDataResult<List<DailyRoutine>>(
-                this.dailyRoutineDao.getByDateAndPerson_id(date, id),"data person id ve date e göre geldi"
+                this.dailyRoutineDao.getByDateAndPerson_id(date, id), "data person id ve date e göre geldi"
         );
     }
 
     @Override
     public DataResult<List<DailyRoutine>> getByDateAndPerson_name(Date date, String name) {
         return new SuccessDataResult<List<DailyRoutine>>(
-                this.dailyRoutineDao.getByDateAndPerson_name(date, name),"data person name ve date e göre geldi"
+                this.dailyRoutineDao.getByDateAndPerson_name(date, name), "data person name ve date e göre geldi"
         );
     }
 
     @Override
     public DataResult<List<DailyRoutine>> getAllSorted() {
-        Sort sort = Sort.by(Sort.Direction.DESC,"date");
-        
-        return new SuccessDataResult<List<DailyRoutine>>(this.dailyRoutineDao.findAll(sort),"daily routine desc olarak listelendi");
+        Sort sort = Sort.by(Sort.Direction.DESC, "date");
+
+        return new SuccessDataResult<List<DailyRoutine>>(this.dailyRoutineDao.findAll(sort), "daily routine desc olarak listelendi");
     }
 
-   
-    
+    @Override
+    public DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDtoSorted() {
+        Sort sort = Sort.by(Sort.Direction.DESC, "date");
+        return new SuccessDataResult<List<BookWithDailyRoutineDto>>(this.dailyRoutineDao.getBookWithDailyRoutineSorted(), "daily routine dto sorted by date");
+    }
+
 }

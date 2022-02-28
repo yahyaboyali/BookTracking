@@ -14,7 +14,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import softwarefromyb.bookTracking.entities.concretes.DailyRoutine;
 import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto;
-import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineWithDateDTO;
 
 /**
  *
@@ -44,8 +43,12 @@ public interface DailyRoutineDao extends JpaRepository<DailyRoutine, Integer> {
     @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto (d.date, b.name, d.countOfPages, d.dailyNote)"
             + "From Book b Inner Join b.dailyRoutines d")
     List<BookWithDailyRoutineDto> getBookWithDailyRoutine();
-    
+
 //    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineWithDateDTO (d.date ,b.name,d.dailyNote, d.countOfPages)"
 //            + "From Book b Inner Join b.dailyRoutines d")
 //    List<BookWithDailyRoutineWithDateDTO> getBookWithDailyRoutine();
+    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto (d.date, b.name, d.countOfPages, d.dailyNote)"
+            + "From Book b Inner Join b.dailyRoutines d order by d.date desc")
+    List<BookWithDailyRoutineDto> getBookWithDailyRoutineSorted();
+
 }
