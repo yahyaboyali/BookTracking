@@ -31,6 +31,7 @@ import softwarefromyb.bookTracking.core.utilities.results.SuccessResult;
 import softwarefromyb.bookTracking.entities.concretes.DailyRoutine;
 import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto;
 import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineWithDateDTO;
+import softwarefromyb.bookTracking.entities.dtos.BookWithPersonWithDailyRoutineDto;
 
 /**
  *
@@ -95,6 +96,10 @@ public class DailyRoutineControllers {
     public DataResult<List<BookWithDailyRoutineDto>> getByBookWithDailyRoutineDtoSorted(){
         return this.dailyRoutineService.getBookWithDailyRoutineDtoSorted();
     }
+//    @GetMapping("/BookWithPersonWithDailyRoutineDto")
+//    public DataResult<List<BookWithPersonWithDailyRoutineDto>> getByBookWithPersonWithDailyRoutineDto(){
+//        return this.dailyRoutineService.getBookWithPersonWithDailyRoutineDto();
+//    }
     
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

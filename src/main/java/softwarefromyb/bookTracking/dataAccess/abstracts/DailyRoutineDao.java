@@ -14,6 +14,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import softwarefromyb.bookTracking.entities.concretes.DailyRoutine;
 import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto;
+import softwarefromyb.bookTracking.entities.dtos.BookWithPersonWithDailyRoutineDto;
 
 /**
  *
@@ -51,4 +52,36 @@ public interface DailyRoutineDao extends JpaRepository<DailyRoutine, Integer> {
             + "From Book b Inner Join b.dailyRoutines d order by d.date desc")
     List<BookWithDailyRoutineDto> getBookWithDailyRoutineSorted();
 
+//    @Query("Select new softwarefromyb.bookTracking.entities.dtos.getBookWithPersonWithDailyRoutine "
+//            + "(b.name,b.numberOfPages,w.name,w.lastname,d.date,d.dailyNote,d.countOfPages)"
+//            + " From Writer w,Person p, ")
+//    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithPersonWithDailyRoutineDto"
+//            + "(p.name ,p.lastName ,b.name ,b.numberOfPages ,writer.name ,writer.lastname,d.date ,d.dailyNote ,d.countOfPages)"
+//            + "From Book AS b, Writer AS writer, Person AS p, DailyRoutine AS d "
+//            + " Where d.person.id =p.id And d.book.id = b.id And b.writer.id = writer.id")
+//    List<BookWithPersonWithDailyRoutineDto> getBookWithPersonWithDailyRoutine();
+    /*
+    java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.util.Date, java.lang.String, int
+    public BookWithPersonWithDailyRoutineDto(String personName, String personLastName, String bookName, int numberOfPages, String writerName, String writerLastName, Date date, String dailyNote, int countOfPages) {
+        this.personName = personName;
+        this.personLastName = personLastName;
+        this.bookName = bookName;
+        this.numberOfPages = numberOfPages;
+        this.writerName = writerName;
+        this.writerLastName = writerLastName;
+        this.date = date;
+        this.dailyNote = dailyNote;
+        this.countOfPages = countOfPages;
+    }
+    
+    private String personName;
+    private String personLastName;
+    private String bookName;
+    private int numberOfPages;
+    private String writerName;
+    private String writerLastName;
+    private Date date;
+    private String dailyNote;
+    private int countOfPages;
+     */
 }

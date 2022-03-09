@@ -19,6 +19,7 @@ import softwarefromyb.bookTracking.dataAccess.abstracts.DailyRoutineDao;
 import softwarefromyb.bookTracking.entities.concretes.DailyRoutine;
 import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto;
 import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineWithDateDTO;
+import softwarefromyb.bookTracking.entities.dtos.BookWithPersonWithDailyRoutineDto;
 
 /**
  *
@@ -99,5 +100,10 @@ public class DailyRoutineManager implements DailyRoutineService {
         Sort sort = Sort.by(Sort.Direction.DESC, "date");
         return new SuccessDataResult<List<BookWithDailyRoutineDto>>(this.dailyRoutineDao.getBookWithDailyRoutineSorted(), "daily routine dto sorted by date");
     }
+
+//    @Override
+//    public DataResult<List<BookWithPersonWithDailyRoutineDto>> getBookWithPersonWithDailyRoutineDto() {
+//        return new SuccessDataResult<List<BookWithPersonWithDailyRoutineDto>>(this.dailyRoutineDao.getBookWithPersonWithDailyRoutine(),"deneme");
+//    }
 
 }

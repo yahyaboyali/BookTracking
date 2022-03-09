@@ -12,6 +12,7 @@ import softwarefromyb.bookTracking.core.utilities.results.Result;
 import softwarefromyb.bookTracking.entities.concretes.DailyRoutine;
 import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto;
 import softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineWithDateDTO;
+import softwarefromyb.bookTracking.entities.dtos.BookWithPersonWithDailyRoutineDto;
 
 /**
  *
@@ -38,4 +39,6 @@ public interface DailyRoutineService {
     DataResult<List<DailyRoutine>> getAllSorted();
     
     DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDtoSorted();
+    
+   // DataResult<List<BookWithPersonWithDailyRoutineDto>> getBookWithPersonWithDailyRoutineDto();
 }
