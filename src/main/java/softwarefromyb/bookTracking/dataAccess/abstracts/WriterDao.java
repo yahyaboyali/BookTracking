@@ -14,5 +14,5 @@ import softwarefromyb.bookTracking.entities.concretes.Writer;
  */
 public interface WriterDao extends JpaRepository<Writer, Integer> {
 
-    boolean existsWriterByName(String name);
+    boolean existsWriterByWriterName(String writerName);
 }

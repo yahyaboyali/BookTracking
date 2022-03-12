@@ -40,12 +40,12 @@ public class Writer {
     @NotBlank
     @NotNull
     @Column(name = "name")
-    private String name;
+    private String writerName;
 
     @NotBlank
     @NotNull
     @Column(name = "lastname")
-    private String lastname;
+    private String writerLastName;
 
     @OneToMany(mappedBy = "writer")
     private List<Book> books;

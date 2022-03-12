@@ -80,18 +80,18 @@ public class BookControllers {
     }
     
     @GetMapping("/exitstBookByName")
-    public Result existsBookByName(String name){
-        return this.bookService.existsBookByName(name);
+    public Result existsBookByName(String bookName){
+        return this.bookService.existsBookByBookName(bookName);
     }
     
     @GetMapping("/getByBookNameStartsWith")
-    public DataResult<List<Book>> getByNameStartsWith(String name){
-        return this.bookService.getByNameStartsWith(name);
+    public DataResult<List<Book>> getByNameStartsWith(String bookName){
+        return this.bookService.getByBookNameStartsWith(bookName);
     }
     
     @GetMapping("/getByNameContains")
-    public DataResult<List<Book>> getByNameContains(String name){
-        return this.bookService.getByNameContains(name);
+    public DataResult<List<Book>> getByNameContains(String bookName){
+        return this.bookService.getByBookNameContains(bookName);
     }
     
 }

@@ -34,7 +34,7 @@ import softwarefromyb.bookTracking.entities.concretes.DailyRoutine;
 @Table(name = "person")
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","dailyRoutines"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "dailyRoutines"})
 public class Person {
 
     @Id
@@ -43,30 +43,29 @@ public class Person {
     private int id;
 
     @Column(name = "name")
-    private String name;
+    private String personName;
 
     @Column(name = "lastname")
-    private String lastName;
+    private String personLastName;
 
     @Email
     @NotNull
     @NotBlank
     @Column(name = "email")
     private String email;
-    
+
     @NotNull
     @NotBlank
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
-    
+
     @OneToMany(mappedBy = "person")
     private List<DailyRoutine> dailyRoutines;
 
-    public Person(String name, String lastName, String email) {
-        this.name = name;
-        this.lastName = lastName;
+    public Person(String personName, String personLastName, String email) {
+        this.personName = personName;
+        this.personLastName = personLastName;
         this.email = email;
     }
-    
-    
+
 }

@@ -15,17 +15,17 @@ import softwarefromyb.bookTracking.entities.concretes.Book;
  */
 public interface BookDao extends JpaRepository<Book, Integer> {
 
-    Book getByName(String name);
+    Book getByBookName(String bookName);
 
-    List<Book> getByWriterId(int writer_id);
+    List<Book> getByWriter_Id(int writer_id);
 
-    List<Book> getByWriterName(String name);
+    List<Book> getByWriter_writerName(String writerName);
 
-    List<Book> getByWriterNameAndWriterLastname(String name, String lastname);
+    List<Book> getByWriter_WriterNameAndWriter_WriterLastName(String writerName, String writerLastName);
 
-    boolean existsBookByName(String name);
+    boolean existsBookByBookName(String bookName);
     
-    List<Book> getByNameStartsWith(String name);
+    List<Book> getByBookNameStartsWith(String bookName);
     
-    List<Book> getByNameContains(String name);
+    List<Book> getByBookNameContains(String bookName);
 }

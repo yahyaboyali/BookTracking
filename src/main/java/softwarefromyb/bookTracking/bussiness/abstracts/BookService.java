@@ -25,11 +25,11 @@ public interface BookService {
   // name ile çalışıyor id ile çalışmıyor çözümümü izle   
     DataResult<List<Book>> getByWriterName(String writerName);
     
-    DataResult<List<Book>> getByWriterNameAndWriterLastname(String writerName,String writerLastname);
+    DataResult<List<Book>> getByWriterNameAndWriterLastname(String writerName,String writerLastName);
     
-    Result existsBookByName(String name);
+    Result existsBookByBookName(String bookName);
     
-    DataResult<List<Book>> getByNameStartsWith(String name);
+    DataResult<List<Book>> getByBookNameStartsWith(String bookName);
     
-    DataResult<List<Book>> getByNameContains(String name);
+    DataResult<List<Book>> getByBookNameContains(String bookName);
 }

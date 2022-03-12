@@ -22,5 +22,5 @@ public interface WriterService {
     
     Result existsById(int id);
     
-    Result exitstsWriterByName(String name);
+    Result exitstsWriterByWriterName(String writerName);
 }

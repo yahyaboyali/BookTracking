@@ -57,8 +57,8 @@ public class WriterManager implements WriterService {
     }
 
     @Override
-    public Result exitstsWriterByName(String name) {
-        if (this.writerDao.existsWriterByName(name)) {
+    public Result exitstsWriterByWriterName(String writerName) {
+        if (this.writerDao.existsWriterByWriterName(writerName)) {
             return new SuccessResult("data bulundu");
         } else {
             return new ErrorResult("böyle bir yazar yok");

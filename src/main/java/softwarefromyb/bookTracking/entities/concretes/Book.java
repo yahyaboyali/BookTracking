@@ -40,7 +40,7 @@ public class Book {
     private int id;
     
     @Column(name="name")
-    private String name;
+    private String bookName;
     
     @Column(name="number_of_pages")
     private int numberOfPages;

@@ -34,7 +34,7 @@ public interface DailyRoutineService {
 
     DataResult<List<DailyRoutine>> getByDateAndPerson_id(Date date, int id);
 
-    DataResult<List<DailyRoutine>> getByDateAndPerson_name(Date date, String name);
+    DataResult<List<DailyRoutine>> getByDateAndPerson_personName(Date date, String personName);
 
     DataResult<List<DailyRoutine>> getAllSorted();
     

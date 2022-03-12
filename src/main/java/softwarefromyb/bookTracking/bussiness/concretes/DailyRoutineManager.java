@@ -82,9 +82,9 @@ public class DailyRoutineManager implements DailyRoutineService {
     }
 
     @Override
-    public DataResult<List<DailyRoutine>> getByDateAndPerson_name(Date date, String name) {
+    public DataResult<List<DailyRoutine>> getByDateAndPerson_personName(Date date, String personName) {
         return new SuccessDataResult<List<DailyRoutine>>(
-                this.dailyRoutineDao.getByDateAndPerson_name(date, name), "data person name ve date e göre geldi"
+                this.dailyRoutineDao.getByDateAndPerson_personName(date, personName), "data person name ve date e göre geldi"
         );
     }
 

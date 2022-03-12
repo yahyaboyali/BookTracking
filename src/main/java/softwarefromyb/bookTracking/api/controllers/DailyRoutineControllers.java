@@ -83,8 +83,8 @@ public class DailyRoutineControllers {
     }
 
     @GetMapping("/getByDateAndPersonName")
-    public DataResult<List<DailyRoutine>> getByDateAndPersonName(@RequestParam("date") Date date, @RequestParam("name") String name) {
-        return this.dailyRoutineService.getByDateAndPerson_name(date, name);
+    public DataResult<List<DailyRoutine>> getByDateAndPersonName(@RequestParam("date") Date date, @RequestParam("name") String personName) {
+        return this.dailyRoutineService.getByDateAndPerson_personName(date, personName);
     }
     
     @GetMapping("/getByAllSortedDesc")

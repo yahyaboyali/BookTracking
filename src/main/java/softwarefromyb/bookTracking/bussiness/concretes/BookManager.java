@@ -46,42 +46,42 @@ public class BookManager implements BookService {
     }
 
     @Override
-    public DataResult<Book> getByBookName(String name) {
+    public DataResult<Book> getByBookName(String bookName) {
         return new SuccessDataResult<Book>(
-                this.bookDao.getByName(name), "data has listed by bookName method"
+                this.bookDao.getByBookName(bookName), "data has listed by bookName method"
         );
     }
 
     @Override
     public DataResult<List<Book>> getByWriterId(int writer_id) {
         return new SuccessDataResult<List<Book>>(
-                this.bookDao.getByWriterId(writer_id), "data writer id ile geldi"
+                this.bookDao.getByWriter_Id(writer_id), "data writer id ile geldi"
         );
     }
 
     @Override
     public DataResult<List<Book>> getByWriterName(String writerName) {
-        if (this.bookDao.getByWriterName(writerName).isEmpty()) {
+        if (this.bookDao.getByWriter_writerName(writerName).isEmpty()) {
             return new ErrorDataResult<List<Book>>("böyle bir yazar yok");
         } else {
             return new SuccessDataResult<List<Book>>(
-                    this.bookDao.getByWriterName(writerName), "writer name e göre data geldi"
+                    this.bookDao.getByWriter_writerName(writerName), "writer name e göre data geldi"
             );
         }
 
     }
 
     @Override
-    public DataResult<List<Book>> getByWriterNameAndWriterLastname(String writerName, String writerLastname) {
+    public DataResult<List<Book>> getByWriterNameAndWriterLastname(String writerName, String writerLastName) {
         return new SuccessDataResult<List<Book>>(
-                this.bookDao.getByWriterNameAndWriterLastname(writerName, writerLastname),
+                this.bookDao.getByWriter_WriterNameAndWriter_WriterLastName(writerName, writerLastName),
                 "data writer name and last name ile geldi"
         );
     }
 
     @Override
-    public Result existsBookByName(String name) {
-        if(this.bookDao.existsBookByName(name)){
+    public Result existsBookByBookName(String bookName) {
+        if(this.bookDao.existsBookByBookName(bookName)){
             return new SuccessResult("data bulundu");
         }else{
             return new ErrorResult("data bulunamadı");
@@ -89,16 +89,16 @@ public class BookManager implements BookService {
     }
 
     @Override
-    public DataResult<List<Book>> getByNameStartsWith(String name) {
+    public DataResult<List<Book>> getByBookNameStartsWith(String bookName) {
         return new SuccessDataResult<List<Book>>(
-                this.bookDao.getByNameStartsWith(name),"datalar listelendi"
+                this.bookDao.getByBookNameStartsWith(bookName),"datalar listelendi"
         );
     }
 
     @Override
-    public DataResult<List<Book>> getByNameContains(String name) {
+    public DataResult<List<Book>> getByBookNameContains(String bookName) {
         return new SuccessDataResult<List<Book>>(
-                this.bookDao.getByNameContains(name),"data containsle geldi"
+                this.bookDao.getByBookNameContains(bookName),"data containsle geldi"
         );
     }
 

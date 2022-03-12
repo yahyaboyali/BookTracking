@@ -58,8 +58,8 @@ public class WriterControllers {
 //        return this.writerService.getById(id);
 //    }
     @GetMapping("/getByNameIs")
-    public Result existsByWriterByName(String name) {
-        return this.writerService.exitstsWriterByName(name);
+    public Result existsByWriterByName(String writerName) {
+        return this.writerService.exitstsWriterByWriterName(writerName);
     }
 
     @GetMapping("/getById")
