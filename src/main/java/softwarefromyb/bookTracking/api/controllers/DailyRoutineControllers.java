@@ -96,10 +96,10 @@ public class DailyRoutineControllers {
     public DataResult<List<BookWithDailyRoutineDto>> getByBookWithDailyRoutineDtoSorted(){
         return this.dailyRoutineService.getBookWithDailyRoutineDtoSorted();
     }
-//    @GetMapping("/BookWithPersonWithDailyRoutineDto")
-//    public DataResult<List<BookWithPersonWithDailyRoutineDto>> getByBookWithPersonWithDailyRoutineDto(){
-//        return this.dailyRoutineService.getBookWithPersonWithDailyRoutineDto();
-//    }
+    @GetMapping("/BookWithPersonWithDailyRoutineDto")
+    public DataResult<List<BookWithPersonWithDailyRoutineDto>> getByBookWithPersonWithDailyRoutineDto(){
+        return this.dailyRoutineService.getBookWithPersonWithDailyRoutineDto();
+    }
     
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

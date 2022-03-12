@@ -6,7 +6,8 @@
 package softwarefromyb.bookTracking.entities.dtos;
 
 
-import java.sql.Date;
+
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,5 +30,22 @@ public class BookWithPersonWithDailyRoutineDto {
     private Date date;
     private String dailyNote;
     private int countOfPages;
+
+
+
+   
+
+   
+
+   
+
+
+
+
+
+
+
+    
+    
 
 }

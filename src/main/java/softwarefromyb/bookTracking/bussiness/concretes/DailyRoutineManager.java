@@ -101,9 +101,9 @@ public class DailyRoutineManager implements DailyRoutineService {
         return new SuccessDataResult<List<BookWithDailyRoutineDto>>(this.dailyRoutineDao.getBookWithDailyRoutineSorted(), "daily routine dto sorted by date");
     }
 
-//    @Override
-//    public DataResult<List<BookWithPersonWithDailyRoutineDto>> getBookWithPersonWithDailyRoutineDto() {
-//        return new SuccessDataResult<List<BookWithPersonWithDailyRoutineDto>>(this.dailyRoutineDao.getBookWithPersonWithDailyRoutine(),"deneme");
-//    }
+    @Override
+    public DataResult<List<BookWithPersonWithDailyRoutineDto>> getBookWithPersonWithDailyRoutineDto() {
+        return new SuccessDataResult<List<BookWithPersonWithDailyRoutineDto>>(this.dailyRoutineDao.getBookWithPersonWithDailyRoutine(),"deneme");
+    }
 
 }

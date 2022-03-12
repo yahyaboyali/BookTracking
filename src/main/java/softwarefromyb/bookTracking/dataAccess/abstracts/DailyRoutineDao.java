@@ -49,18 +49,28 @@ public interface DailyRoutineDao extends JpaRepository<DailyRoutine, Integer> {
 //    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineWithDateDTO (d.date ,b.name,d.dailyNote, d.countOfPages)"
 //            + "From Book b Inner Join b.dailyRoutines d")
 //    List<BookWithDailyRoutineWithDateDTO> getBookWithDailyRoutine();
+    /*
+     private Date date;
+    private String bookname;
+    private int countofpages;
+    private String dailynote;
+    */
+//    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto (d.date, b.bookName, d.countOfPages, d.dailyNote)"
+//            + "From Book b Inner Join b.dailyRoutines d order by d.date desc")
     @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto (d.date, b.bookName, d.countOfPages, d.dailyNote)"
-            + "From Book b Inner Join b.dailyRoutines d order by d.date desc")
+            + "From Book b, DailyRoutine d Where b.id=d.book.id Order By d.date desc") 
     List<BookWithDailyRoutineDto> getBookWithDailyRoutineSorted();
 
 //    @Query("Select new softwarefromyb.bookTracking.entities.dtos.getBookWithPersonWithDailyRoutine "
 //            + "(b.name,b.numberOfPages,w.name,w.lastname,d.date,d.dailyNote,d.countOfPages)"
 //            + " From Writer w,Person p, ")
-//    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithPersonWithDailyRoutineDto"
-//            + "(p.name ,p.lastName ,b.name ,b.numberOfPages ,writer.name ,writer.lastname,d.date ,d.dailyNote ,d.countOfPages)"
-//            + "From Book AS b, Writer AS writer, Person AS p, DailyRoutine AS d "
-//            + " Where d.person.id =p.id And d.book.id = b.id And b.writer.id = writer.id")
-//    List<BookWithPersonWithDailyRoutineDto> getBookWithPersonWithDailyRoutine();
+    //(String personName, String personLastName, String bookName, int numberOfPages,
+    //String writerName, String writerLastName, Date date, String dailyNote, int countOfPages)
+    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithPersonWithDailyRoutineDto"
+            + "(p.personName,p.personLastName,b.bookName,b.numberOfPages,w.writerName,w.writerLastName,d.date,d.dailyNote,d.countOfPages)"
+            + "From DailyRoutine AS d, Book AS b, Writer AS w, Person AS p"
+            + " Where p.id=d.person.id And b.id=d.book.id And b.writer.id=w.id") 
+    List<BookWithPersonWithDailyRoutineDto> getBookWithPersonWithDailyRoutine(); 
     /*
     java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.util.Date, java.lang.String, int
     public BookWithPersonWithDailyRoutineDto(String personName, String personLastName, String bookName, int numberOfPages, String writerName, String writerLastName, Date date, String dailyNote, int countOfPages) {
