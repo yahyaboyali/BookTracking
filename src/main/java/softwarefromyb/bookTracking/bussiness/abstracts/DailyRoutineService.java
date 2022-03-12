@@ -41,4 +41,6 @@ public interface DailyRoutineService {
     DataResult<List<BookWithDailyRoutineDto>> getBookWithDailyRoutineDtoSorted();
     
     DataResult<List<BookWithPersonWithDailyRoutineDto>> getBookWithPersonWithDailyRoutineDto();
+    
+    DataResult<List<BookWithPersonWithDailyRoutineDto>> getBookWithPersonWithDailyRoutineDtoByPerson_id(int pid);
 }

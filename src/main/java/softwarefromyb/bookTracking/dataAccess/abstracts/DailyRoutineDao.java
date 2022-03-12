@@ -45,7 +45,7 @@ public interface DailyRoutineDao extends JpaRepository<DailyRoutine, Integer> {
     @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineDto (d.date, b.bookName, d.countOfPages, d.dailyNote)"
             + "From Book b Inner Join b.dailyRoutines d")
     List<BookWithDailyRoutineDto> getBookWithDailyRoutine();
-
+    
 //    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithDailyRoutineWithDateDTO (d.date ,b.name,d.dailyNote, d.countOfPages)"
 //            + "From Book b Inner Join b.dailyRoutines d")
 //    List<BookWithDailyRoutineWithDateDTO> getBookWithDailyRoutine();
@@ -71,6 +71,12 @@ public interface DailyRoutineDao extends JpaRepository<DailyRoutine, Integer> {
             + "From DailyRoutine AS d, Book AS b, Writer AS w, Person AS p"
             + " Where p.id=d.person.id And b.id=d.book.id And b.writer.id=w.id") 
     List<BookWithPersonWithDailyRoutineDto> getBookWithPersonWithDailyRoutine(); 
+    
+    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithPersonWithDailyRoutineDto"
+            + "(p.personName,p.personLastName,b.bookName,b.numberOfPages,w.writerName,w.writerLastName,d.date,d.dailyNote,d.countOfPages)"
+            + "From DailyRoutine AS d, Book AS b, Writer AS w, Person AS p"
+            + " Where p.id=d.person.id And b.id=d.book.id And b.writer.id=w.id And p.id=:pid")  
+    List<BookWithPersonWithDailyRoutineDto> getBookWithPersonWithDailyRoutineByPerson_id(@Param("pid") int pid);
     /*
     java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.util.Date, java.lang.String, int
     public BookWithPersonWithDailyRoutineDto(String personName, String personLastName, String bookName, int numberOfPages, String writerName, String writerLastName, Date date, String dailyNote, int countOfPages) {
