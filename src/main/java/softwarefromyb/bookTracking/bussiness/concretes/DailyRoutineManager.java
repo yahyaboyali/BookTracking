@@ -112,4 +112,11 @@ public class DailyRoutineManager implements DailyRoutineService {
         this.dailyRoutineDao.getBookWithPersonWithDailyRoutineByPerson_id(pid),(pid+" nolu kullanıcının verileri geldi"));
     }
 
+    @Override
+    public DataResult<List<BookWithPersonWithDailyRoutineDto>> getBookWithPersonWithDailyRoutineDtoByPerson_personName(String personName) {
+        return new SuccessDataResult<List<BookWithPersonWithDailyRoutineDto>>(
+                this.dailyRoutineDao.getBookWithPersonWithDailyRoutineByPerson_personName(personName),(personName+ " adlı kullanıcının verileri geldi")
+        );
+    }
+
 }

@@ -77,6 +77,12 @@ public interface DailyRoutineDao extends JpaRepository<DailyRoutine, Integer> {
             + "From DailyRoutine AS d, Book AS b, Writer AS w, Person AS p"
             + " Where p.id=d.person.id And b.id=d.book.id And b.writer.id=w.id And p.id=:pid")  
     List<BookWithPersonWithDailyRoutineDto> getBookWithPersonWithDailyRoutineByPerson_id(@Param("pid") int pid);
+    
+    @Query("Select new softwarefromyb.bookTracking.entities.dtos.BookWithPersonWithDailyRoutineDto"
+            + "(p.personName,p.personLastName,b.bookName,b.numberOfPages,w.writerName,w.writerLastName,d.date,d.dailyNote,d.countOfPages)"
+            + "From DailyRoutine AS d, Book AS b, Writer AS w, Person AS p"
+            + " Where p.id=d.person.id And b.id=d.book.id And b.writer.id=w.id And p.personName=:personName")  
+    List<BookWithPersonWithDailyRoutineDto> getBookWithPersonWithDailyRoutineByPerson_personName(@Param("personName") String personName);
     /*
     java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.util.Date, java.lang.String, int
     public BookWithPersonWithDailyRoutineDto(String personName, String personLastName, String bookName, int numberOfPages, String writerName, String writerLastName, Date date, String dailyNote, int countOfPages) {

@@ -107,6 +107,11 @@ public class DailyRoutineControllers {
         return this.dailyRoutineService.getBookWithPersonWithDailyRoutineDtoByPerson_id(pid);
     }
     
+    @GetMapping("BookWithPersonWithDailyRoutineDtoByPerson_personName")
+    public DataResult<List<BookWithPersonWithDailyRoutineDto>> getByBookWithPersonWithDailyRoutineDtoByPerson_personName(@RequestParam String personName){
+        return this.dailyRoutineService.getBookWithPersonWithDailyRoutineDtoByPerson_personName(personName);
+    }
+    
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorDataResult<Object> handleValidExceptions(MethodArgumentNotValidException exceptions) {

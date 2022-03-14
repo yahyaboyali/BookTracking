@@ -43,4 +43,6 @@ public interface DailyRoutineService {
     DataResult<List<BookWithPersonWithDailyRoutineDto>> getBookWithPersonWithDailyRoutineDto();
     
     DataResult<List<BookWithPersonWithDailyRoutineDto>> getBookWithPersonWithDailyRoutineDtoByPerson_id(int pid);
+    
+    DataResult<List<BookWithPersonWithDailyRoutineDto>> getBookWithPersonWithDailyRoutineDtoByPerson_personName(String personName);
 }

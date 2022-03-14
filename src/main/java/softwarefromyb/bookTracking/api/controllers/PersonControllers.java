@@ -49,6 +49,5 @@ public class PersonControllers {
     public DataResult<List<Person>> getAll(){
         return this.personService.getAll();
     }
-    
-    
+   
 }
